@@ -3,6 +3,136 @@ html, body {
   margin: 0;
   padding: 0;
 }
+h1 { font-size: 60px }
+h2 { font-size: 40px }
+h3 { font-size: 25px }
+h4 { font-size: 20px }
+h5 { font-size: 15px }
+h6 { font-size: 10px }
+@media (max-width: 400px) {
+  h4 { font-size: 15px }
+  h3 { font-size: 13px }
+}
+$primary: #3CE3C4;
+$secondary: #FFFFFF;
+.container {
+  padding: 0;
+}
+.container-wrapper {
+    width: 100%;
+    height:100%;
+    background-color: $primary;
+}
+.page-choose-time {
+    h2, h4 { color: $secondary }
+    h4 { font-weight: lighter }
+    select {
+        border: none;
+        -webkit-border-radius: 0;
+        background-color: $secondary;
+    }
+}
+.btn-primary {
+  border: 2px solid white;
+  border-radius: 5px;
+  background: $primary;
+  padding: 5px 15px;
+}
+
+/* Choose Date Styles */
+.choose-date {
+  margin: 0 auto;
+  width: 450px;
+  @media (max-width: 400px) {
+    width: 380px;
+  }
+  .DayPicker-NavBar {
+    width: 430px;
+    margin: 0 auto;
+    top: 40px;
+    @media (max-width: 400px) {
+      width: 360px;
+    }
+  }
+  .DayPicker-Caption {
+    font-size: 25px;
+    color: black;
+    background: white;
+    padding: 20px 0 60px;
+  }
+  .DayPicker-Month {
+    height: 350px;
+    width: 450px;
+    padding: 0;
+    margin: 0;
+    @media (max-width: 400px) {
+      width: 360px;
+    } 
+  }
+  .DayPicker-WeekdaysRow {
+    background: white;
+  }
+  .DayPicker-Weekday {
+    color: black;
+  }
+  .DayPicker-Day {
+    border: none;
+  }
+  .DayPicker-Body {
+    background: white;
+    color: black;
+  }
+  .table-wrapper {
+    margin-top: 20px;
+    height: 120px;
+    @media (max-width: 400px) {
+      margin-top: 0;
+      height: 90px;
+    }
+  }
+  text-align: center;
+  color: white;
+  table {
+    margin: 0 auto;
+  }
+  th {
+    width: 150px;
+    text-align: center;
+    border: 1px solid white;
+    @media (max-width: 400px) {
+      width: 100px;
+    }
+  }
+  td {
+    width: 150px;
+    text-align: center;
+    @media (max-width: 400px) {
+      width: 100px;
+    }
+  }
+  .btn-wrapper {
+    width: 450px;
+    margin: 0 auto 20px;
+    a, button {
+      display: inline-block;
+    }
+    @media (max-width: 400px) {
+      width: 40fost
+      0px;
+      button {
+        margin-left: 20px;
+      }
+    }
+    a {
+      padding-right: 80px;
+      color: white;
+      @media (max-width: 400px) {
+        padding-right: 20px;
+      }
+    }
+  }
+}
+/* Choose Date Styles End*/
 
 .flex {
   display: flex;
