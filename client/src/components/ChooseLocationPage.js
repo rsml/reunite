@@ -1,13 +1,15 @@
 import React from "react";
 import PlacesAutocomplete, {geocodeByAddress, geocodeByPlaceId} from 'react-places-autocomplete'
 import { browserHistory } from 'react-router';
+import axios from 'axios';
+
 
 // Home page component
 export default class Home extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      address: null,
+      address: '',
       isMapVisible: false
     }
     this.onChange = (address) => this.setState({ address })
@@ -35,7 +37,7 @@ export default class Home extends React.Component {
 
     var mapProp= {
         center:latLng,
-        zoom:5,
+        zoom:17,
     };
     var map=new window.google.maps.Map(document.getElementById("googleMap"),mapProp);
 
@@ -50,10 +52,47 @@ export default class Home extends React.Component {
       savedAddress: this.state.address
     });
 
-    window.localStorage.setItem('address', savedAddress);
+    window.localStorage.setItem('address', this.state.address);
   }
 
   handleClickCTA(event){
+    const address = window.localStorage.getItem('address');
+
+    let savedDate = new Date(parseInt(window.localStorage.getItem('date'), 10));
+    let savedTime = new Date(parseInt(window.localStorage.getItem('time'), 10));
+
+    let combinedDate = new Date(parseInt(window.localStorage.getItem('time'), 10));;
+    combinedDate.setDate(savedDate.getDate());
+    combinedDate.setMonth(savedDate.getMonth());
+    combinedDate.setYear(1900 + savedDate.getYear());
+
+    // savedDate.setHours(savedTime.getHours());
+    // savedDate.setMinutes(savedTime.getMinutes());
+    // savedDate.setSeconds(savedTime.getSeconds());
+    // savedDate.setMilliseconds(savedTime.getMilliseconds());
+
+
+    axios.post('http://ec2-34-208-196-65.us-west-2.compute.amazonaws.com:4040/api/visitations', {
+      location: address,
+      datetime: savedDate,
+      caseId: 1
+    })
+    .then(function (response) {
+      var visitationId = response.visitationId;
+      axios.post('http://ec2-34-208-196-65.us-west-2.compute.amazonaws.com:4040/api/phonecall', {
+        location: address,
+        datetime: savedDate,
+        visitationId: visitationId
+      }).then(function (response) {
+        debugger;
+      });
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+
+
+
     browserHistory.push('/success');
   }
 
@@ -85,7 +124,7 @@ export default class Home extends React.Component {
         })();
 
         return (
-          <div class="flex flex-column">
+          <div className="flex flex-column">
             <div className="flex-grow flex pull-to-front width-100 rounded input-container">
               <div className="flex-grow">
                 <PlacesAutocomplete inputProps={inputProps} />
@@ -102,10 +141,9 @@ export default class Home extends React.Component {
           </div>
         )
       }else{
-
         setTimeout(function(){
-          that.render();
-        }, 100)
+          that.forceUpdate();
+        }, 50)
         return "Loading...";
       }
     })();

@@ -1,6 +1,7 @@
 import React from "react"
 import DayPicker from "react-day-picker";
 import "react-day-picker/lib/style.css"
+import { browserHistory } from 'react-router';
 
 // Home page component
 export default class Home extends React.Component {
@@ -16,7 +17,7 @@ export default class Home extends React.Component {
     if ( this.state.selectedDayArray.length < 3) {
       this.state.selectedDayArray.push(selected.toLocaleDateString())
       this.setState({
-        selectedDay: selected.toLocaleDateString()
+        selectedDay: selected.getTime()
       })
     }
   }
@@ -25,6 +26,12 @@ export default class Home extends React.Component {
       selectedDayArray: []
     })
   }
+
+  handleClickCTA(event){
+    window.localStorage.setItem('date', this.state.selectedDay);
+    browserHistory.push('/choose-time');
+  }
+
   // render
   render() {
     return (
@@ -50,17 +57,17 @@ export default class Home extends React.Component {
                   return (
                     <td key={index}>
                       <h4>{item}</h4>
-                    </td>  
+                    </td>
                   )
                 })}
               </tr>
-            </tbody> 
+            </tbody>
           </table>
-        </div>  
-        <div className="btn-wrapper"> 
+        </div>
+        <div className="btn-wrapper">
           <a className="" onClick={() => this.clearDates()}><h4>Clear All</h4></a>
-          <button className="btn-primary"><h4>NEXT</h4></button>
-        </div>  
+          <button className="btn-primary" onClick={this.handleClickCTA.bind(this)}><h4>NEXT</h4></button>
+        </div>
       </div>
     );
   }

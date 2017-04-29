@@ -1,7 +1,23 @@
 import React from "react";
+import { browserHistory } from 'react-router';
 
 // Home page component
 export default class Home extends React.Component {
+	handleClickCTA(event){
+		var uncleanDate = parseInt(document.getElementById('first-time-select').value, 10);
+		var dateHours = Math.floor(uncleanDate / 100);
+		var dateMinutes = Math.floor(uncleanDate % 100);
+
+		var date = new Date();
+		date.setHours(dateHours);
+		date.setMinutes(dateMinutes);
+		date.setSeconds(0);
+		date.setMilliseconds(0);
+
+    window.localStorage.setItem('time', date.getTime());
+    browserHistory.push('/choose-location');
+  }
+
   // render
   render() {
     return (
@@ -11,9 +27,9 @@ export default class Home extends React.Component {
         <div className="selected-dates">
         	<div className="individual-date">
 	        	<h2>August 17th</h2>
-	        	<div className='time-select'>
+	        	<div className='time-select' id="first-time">
 	        		<h4>Start Time</h4>
-	        		<select>
+	        		<select id="first-time-select">
 	        			<option value='600'>6:00 AM</option>
 	        			<option value='630'>6:30 AM</option>
 	        			<option value='700'>7:00 AM</option>
@@ -223,7 +239,7 @@ export default class Home extends React.Component {
 	        	</div>
         	</div>
         </div>
-        <button className='btn-primary'>Next</button>
+        <div className='cta' onClick={this.handleClickCTA.bind(this)}>NEXT</div>
       </div>
     );
   }

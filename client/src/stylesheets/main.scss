@@ -11,6 +11,14 @@ html, body {
   color: white;
 }
 
+#app {
+  height: 100%;
+}
+
+.height-100 {
+  height: 100%;
+}
+
 h1 { font-size: 60px }
 h2 { font-size: 40px }
 h3 { font-size: 25px }
@@ -91,7 +99,7 @@ $buttonBorderRadius: 8px;
           border: none;
           color: black;
           background-color: $secondary
-        } 
+        }
       }
       @media (max-width: 768px) {
         h2 {
@@ -218,23 +226,35 @@ $buttonBorderRadius: 8px;
 /* Choose Date Styles End*/
 
 .page-choose-location {
+  padding: 10px;
+
   .input-container {
     margin-bottom: 3px;
+  }
+
+  @media (max-width: 800px) {
+    h2 {
+      font-size: 25px !important;
+    }
   }
 
   h4 {
     text-align: center;
     font-size: 40px;
     margin-bottom: 44px;
+
   }
 
   input {
     color: black;
+
+    @media (max-width: 800px) {
+      height: 44px !important;
+      line-height: 44px !important;
+    }
   }
 
   input[type="text"] {
-    border-top-left-radius: $buttonBorderRadius;
-    border-bottom-left-radius: $buttonBorderRadius;
     border: none;
     box-shadow: inset 1px 1px 3px rgba(0,0,0,0.5);
     height: 66px;
@@ -242,31 +262,13 @@ $buttonBorderRadius: 8px;
     font-size: 22px;
   }
 
-  .rounded {
-    border-radius: $buttonBorderRadius;
-  }
-
   input[type="submit"] {
     background: #5a90db;
     color: white;
     border: none;
-    border-top-right-radius: $buttonBorderRadius;
-    border-bottom-right-radius: $buttonBorderRadius;
     height: 66px;
     line-height: 66px;
     font-size: 18px;
-  }
-
-  .flex {
-    display: flex;
-  }
-
-  .flex-column {
-    flex-direction: column;
-  }
-
-  .flex-grow {
-    flex: 1;
   }
 
   #googleMap {
@@ -319,6 +321,8 @@ $buttonBorderRadius: 8px;
     color: rgb(80, 227, 194);
   }
 }
+
+
 /* Success Page */
 .success-wrapper {
   width: 100%;
@@ -332,7 +336,7 @@ $buttonBorderRadius: 8px;
       font-size: 25px;
     }
   }
-  .success-message { 
+  .success-message {
     text-align: center;
     position: absolute;
     top: 50%;
@@ -342,4 +346,17 @@ $buttonBorderRadius: 8px;
       font-size: 100px;
     }
   }
+}
+
+.flex {
+  display: flex;
+  display: -webkit-flex;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+.flex-grow {
+  flex-grow: 1;
 }
