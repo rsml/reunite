@@ -100,10 +100,18 @@ export default class Home extends React.Component {
         childId: visitation.childId,
         socialWorkerId: visitation.socialWorkerId,
         location: address,
-        datetime: combinedDate.getTime(),
-        visitationId: visitationId
-      }).then(function (response) {
-      });
+        datetime: savedDate
+      })
+      .then(function (response) {
+        var visitationId = response.data._id;
+        axios.get('http://ec2-34-208-196-65.us-west-2.compute.amazonaws.com:4040/api/call/parent/' + visitationId)
+        .then(function (response) {
+          browserHistory.push('/success');
+        });
+      })
+      .catch(function (error) {
+        console.log(error)
+      })
     })
 
   }
