@@ -35,7 +35,7 @@ export default class Home extends React.Component {
 
     var mapProp= {
         center:latLng,
-        zoom:5,
+        zoom:17,
     };
     var map=new window.google.maps.Map(document.getElementById("googleMap"),mapProp);
 
@@ -102,10 +102,9 @@ export default class Home extends React.Component {
           </div>
         )
       }else{
-
         setTimeout(function(){
-          that.render();
-        }, 100)
+          that.forceUpdate();
+        }, 50)
         return "Loading...";
       }
     })();
