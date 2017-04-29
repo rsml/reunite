@@ -59,7 +59,9 @@ export default class Home extends React.Component {
 			(<option key="29" value='2000'>8:00 PM</option>),
   	];
 
-  	const individualDates = (dateArray || []).map((dateInMilliseconds) => {
+  	const individualDates = (dateArray || []).sort((a,b)=>{
+      return a - b;
+    }).map((dateInMilliseconds) => {
   		var date = new Date(dateInMilliseconds)
   		const formattedDate = moment(date).format('MMMM Do, YYYY');
 
