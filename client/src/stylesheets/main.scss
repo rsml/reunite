@@ -61,6 +61,12 @@ h6 { font-size: 10px }
 }
 
 .back-btn {
+  padding-top: 10px;
+  padding-left: 10px;
+  color: white;
+  position: absolute;
+  left: 0;
+  top: 0;
   text-align: left;
   display: block;
   text-decoration: none;
@@ -281,6 +287,7 @@ h6 { font-size: 10px }
 /* Choose Date Styles End*/
 
 .page-choose-location {
+  padding: 30px 10px 0;
   max-width: 650px;
   margin: 0 auto;
   .input-container {
@@ -503,4 +510,8 @@ a.btn-1 {
 
 .lightgrey {
   color: #AAA
+}
+
+.page-home {
+  padding-top: 30px;
 }
