@@ -9,15 +9,27 @@ export default class Home extends React.Component {
     super(props)
     this.state = {
       selectedDay: new Date(),
-      selectedDayArray: []
+      selectedDayArray: [],
+      selectedDateArray: []
     }
   }
 
   handleDayClick(selected) {
+    var dateArray = (this.state.selectedDateArray || []).map((date) => {
+      if(typeof date == "number"){
+        return date;
+      }else{
+        return date.getTime();
+      }
+    })
+
+    dateArray.push(selected.getTime());
+
     if ( this.state.selectedDayArray.length < 3) {
       this.state.selectedDayArray.push(selected.toLocaleDateString())
       this.setState({
-        selectedDay: selected.getTime()
+        selectedDay: selected.getTime(),
+        selectedDateArray: dateArray
       })
     }
   }
@@ -29,6 +41,7 @@ export default class Home extends React.Component {
 
   handleClickCTA(event){
     window.localStorage.setItem('date', this.state.selectedDay);
+    window.localStorage.setItem('dateArray', JSON.stringify(this.state.selectedDateArray));
     browserHistory.push('/choose-time');
   }
 
@@ -36,7 +49,8 @@ export default class Home extends React.Component {
   render() {
     return (
       <div className="page-home choose-date">
-        <h3>Pick at least three dates</h3>
+        <a className='back-btn'><span className='glyphicon glyphicon-chevron-left' onClick={this.handleClickCTA.bind(this)}></span>Back</a>
+        <h2>Pick at least three dates</h2>
         <DayPicker
           initialMonth={ new Date(2017, 4) }
           selectedDays={ new Date(this.state.selectedDay) }
