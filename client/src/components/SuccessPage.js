@@ -9,8 +9,7 @@ export default class Home extends React.Component {
       <div className="page-home success-wrapper">
         <Link to='/'>
           <a id="cancel-icon">
-            <i className="glyphicon glyphicon-remove-circle"></i>
-            <p>Close</p>
+            <span className="glyphicon glyphicon-remove-circle"></span>Close
           </a> 
         </Link>  
         <div className="success-message">
