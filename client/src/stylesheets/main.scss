@@ -286,7 +286,7 @@ input {
 /* Choose Date Styles End*/
 
 .page-choose-location {
-  padding: 30px 10px 0;
+  padding: 8px 10px 0;
   max-width: 650px;
   margin: 0 auto;
   .input-container {
@@ -349,7 +349,7 @@ input {
 
   .address-under-map {
     margin-top: 20px;
-    margin-bottom: 45px;
+    margin-bottom: 20px;
     text-align: center;
     font-size: 22px;
   }
@@ -519,15 +519,36 @@ a.btn-1 {
   flex-grow: 1;
 }
 
-.logo {
-  margin: auto;
-  width: 180px;
-}
-
 .lightgrey {
   color: #AAA
 }
 
 .page-home {
   padding-top: 30px;
+}
+
+#logo {
+  margin: auto;
+  width: 180px;
+  transition: all 0.2s ease-out;
+  opacity: 0;
+  transform: translate(0, -20px);
+
+  &.visible {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+}
+
+
+#select-a-case {
+  transition: all 0.3s ease-out;
+  opacity: 0;
+  position: relative;
+  transform: translate(0, 60px);
+
+  &.visible {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
 }
