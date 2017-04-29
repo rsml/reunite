@@ -147,13 +147,16 @@ export default class Home extends React.Component {
           }
         })();
 
+        const inputDisabled = (!that.state.address || that.state.address.length === 0);
+        debugger;
+
         return (
           <div className="flex flex-column">
             <div className="flex-grow flex pull-to-front width-100 rounded input-container">
               <div className="flex-grow">
                 <PlacesAutocomplete inputProps={inputProps} />
               </div>
-              <input className="search-input" type="submit" value="SEARCH" onClick={that.handleFormSubmit.bind(that)} />
+              <input className={"search-input" + (inputDisabled ? ' disabled' : '')} type="submit" value="SEARCH" onClick={that.handleFormSubmit.bind(that)} />
             </div>
             <div className=" flex-grow z-index-1">
 
