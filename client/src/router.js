@@ -13,7 +13,7 @@ import ChooseCase from './components/ChooseCase';
 const router = (
   <Router onUpdate={() => window.scrollTo(0, 0)} history={history}>
     <Route path="/" component={App}>
-      <IndexRoute component={ChooseDatePage}/>
+      <IndexRoute component={ChooseCase}/>
       <Route path="/choose-case" component={ChooseCase}/>
       <Route path="/choose-date" component={ChooseDatePage}/>
       <Route path="/choose-time" component={ChooseTimePage}/>

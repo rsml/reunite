@@ -155,7 +155,7 @@ export default class Home extends React.Component {
 
     return (
       <div className="page-choose-location">
-        <a className='back-btn' href="/choose-date"><span className='glyphicon glyphicon-chevron-left'></span>Back</a>
+        <a className='back-btn' href="/choose-time"><span className='glyphicon glyphicon-chevron-left'></span>Back</a>
         <h2 className="text-align-center">Choose a Location</h2>
 
         {map}
