@@ -9,12 +9,9 @@ export default class App extends React.Component {
     return (
       <div className="container-wrapper flex height-100 flex-column">
         <div className="flex-grow"></div>
-        <div>
-
           <div className="container">
             {this.props.children}
           </div>
-        </div>
         <div className="flex-grow"></div>
       </div>
     );

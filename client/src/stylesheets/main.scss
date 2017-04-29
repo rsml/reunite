@@ -1,15 +1,15 @@
 $primary: #3CE3C4;
 $secondary: #FFFFFF;
 $light-gray: darken($secondary, 20%);
-$gradient: linear-gradient(to top, #A6FFCB, #12D8FA, #1FA2FF);  /* Chrome 10-25, Safari 5.1-6 */
+$gradient: linear-gradient(to top, #A6FFCB, #12D8FA, #1FA2FF);
 $buttonBorderRadius: 8px;
 $text-shadow: 1px 1px 1px lighten(black, 60%);
 
 html, body {
   margin: 0;
   padding: 0;
-  background-color: $primary;
   color: white;
+  background: $gradient;
 }
 
 #app {
@@ -23,7 +23,7 @@ html, body {
 h1 { font-size: 60px }
 h2 {
   font-size: 40px;
-  text-shadow: $text-shadow
+  text-shadow: $text-shadow;
 }
 h3 { font-size: 25px }
 h4 { font-size: 20px }
@@ -75,17 +75,18 @@ h6 { font-size: 10px }
 }
 
 .container-wrapper {
-    width: 100vw;
+    min-width: 100vw;
+    width: 100%;
     min-height: 100vh;
     height: 100%;
-    background: $gradient;
-    font-family: 'Roboto', sans-serif;
-    font-weight: 400;
     min-width: 320px;
+    padding-top: 30px;
+    font-family: 'Open Sans Condensed', sans-serif;
 }
 
 .container {
   padding: 0;
+  margin: 0 !important;
 }
 
 /* -- Time Select styling -- */
@@ -138,7 +139,7 @@ h6 { font-size: 10px }
     width: 450px;
   }
   @media (max-width: 480px) {
-    width: 100%;
+    width: 320px;
   }
 }
 
@@ -177,14 +178,14 @@ h6 { font-size: 10px }
   margin: 0 auto;
   width: 450px;
   @media (max-width: 480px) {
-    width: 380px;
+    width: 330px;
   }
   .DayPicker-NavBar {
     width: 430px;
     margin: 0 auto;
     top: 40px;
     @media (max-width: 400px) {
-      width: 360px;
+      width: 320px;
     }
   }
   .DayPicker-Caption {
@@ -197,9 +198,9 @@ h6 { font-size: 10px }
     height: 350px;
     width: 450px;
     padding: 0;
-    margin: 0;
-    @media (max-width: 400px) {
-      width: 360px;
+    margin: 0 auto;
+    @media (max-width: 480px) {
+      width: 320px;
     }
   }
   .DayPicker-WeekdaysRow {
@@ -349,6 +350,10 @@ h6 { font-size: 10px }
     padding: 0 15px;
     background-color: darken($secondary, 25%) !important;
   }
+  @media (max-width: 480px) {
+    width: 320px;
+    margin: 0 auto;
+  }
 }
 
 .text-align-center {
@@ -379,25 +384,29 @@ h6 { font-size: 10px }
 /* Success Page */
 .success-wrapper {
   width: 650px;
-  padding: 15px;
-  #cancel-icon {
-    text-align: center;
-    position: absolute;
-    right: 15px;
-    color: white;
-    i {
-      font-size: 25px;
+  margin: 30px auto;
+  a {
+    float: right;
+    margin-top: -40px;
+    #cancel-icon {
+      text-align: center;
+      color: white;
+      font-size: 20px;
+      i {
+        font-size: 25px;
+      }
     }
   }
   .success-message {
     text-align: center;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    // position: absolute;
     i {
       font-size: 100px;
     }
+  }
+  @media (max-width: 480px) {
+    width: 300px;
+    margin-top: -160px;
   }
 }
 
@@ -409,7 +418,11 @@ h6 { font-size: 10px }
 .flex-column {
   flex-direction: column;
 }
-
 .flex-grow {
   flex-grow: 1;
+}
+.flex-grow-sm {
+  @media (max-width: 480px) {
+    flex-grow: 0.01;
+  }
 }
