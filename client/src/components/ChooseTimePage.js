@@ -239,7 +239,12 @@ export default class Home extends React.Component {
 	        	</div>
         	</div>
         </div>
-        <div className='cta' onClick={this.handleClickCTA.bind(this)}>NEXT</div>
+        <a onClick={this.handleClickCTA.bind(this)} className="btn btn-1">
+          <svg>
+            <rect x="0" y="0" fill="none" width="100%" height="100%"/>
+          </svg>
+         <h4>NEXT</h4>
+        </a>
       </div>
     );
   }
