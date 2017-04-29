@@ -1,13 +1,14 @@
-@font-face {
-  font-family: 'Julius Sans One';
-  src: url('https://fonts.googleapis.com/css?family=Julius+Sans+One');
-}
+$primary: #3CE3C4;
+$secondary: #FFFFFF;
+$light-gray: darken($secondary, 20%);
+$gradient: linear-gradient(to top, #A6FFCB, #12D8FA, #1FA2FF);  /* Chrome 10-25, Safari 5.1-6 */
+$buttonBorderRadius: 8px;
+$text-shadow: 1px 1px 1px lighten(black, 60%);
 
 html, body {
-  height: 100%;
   margin: 0;
   padding: 0;
-  background: rgb(80, 227, 194);
+  background-color: $primary;
   color: white;
 }
 
@@ -20,7 +21,10 @@ html, body {
 }
 
 h1 { font-size: 60px }
-h2 { font-size: 40px }
+h2 { 
+  font-size: 40px;
+  text-shadow: $text-shadow
+}
 h3 { font-size: 25px }
 h4 { font-size: 20px }
 h5 { font-size: 15px }
@@ -35,9 +39,6 @@ h6 { font-size: 10px }
   h3 { font-size: 20px }
 }
 
-$primary: #3CE3C4;
-$secondary: #FFFFFF;
-$buttonBorderRadius: 8px;
 
 .btn-primary {
   border: 2px solid white;
@@ -48,16 +49,37 @@ $buttonBorderRadius: 8px;
   margin-bottom: 30px;
 }
 .btn-primary:hover {
-  border: 2px solid $secondary;
-  background: $secondary;
+  border: 2px solid darken($secondary, 8%);
+  background: darken($secondary, 8%);
   color: $primary;
+}
+.btn-primary:focus {
+  background: darken($secondary, 20%);
+  border:none;
+  color: $secondary;
+  outline: none;
+}
+
+.back-btn {
+  text-align: left;
+  display: block;
+  text-decoration: none;
+  color: $secondary;
+  cursor: pointer;
+  font-size: 20px;
+  text-shadow: $text-shadow;
+  &:hover {
+    color: darken($secondary, 50%);
+    text-decoration: none;
+  }
 }
 
 .container-wrapper {
-    width: 100%;
-    height:100%;
-    background-color: $primary;
-    font-family: 'Julius Sans One', sans-serif;
+    width: 100vw;
+    min-height: 100vh;
+    height: 100%;
+    background: $gradient;
+    font-family: 'Open Sans Condensed', sans-serif;
 }
 
 .container {
@@ -70,13 +92,6 @@ $buttonBorderRadius: 8px;
   width: 650px;
   margin: 0 auto;
   text-align: center;
-  a {
-    text-align: left;
-    display: block;
-    text-decoration: none;
-    color: $secondary;
-    cursor: pointer
-  }
   h2, h4 { color: $secondary }
   .selected-dates {
     margin: 60px 0;
@@ -98,6 +113,7 @@ $buttonBorderRadius: 8px;
         select {
           border: none;
           color: black;
+          font-size: 20px;
           background-color: $secondary
         }
       }
@@ -123,6 +139,30 @@ $buttonBorderRadius: 8px;
     width: 350px;
   }
 }
+
+.page-choose-case {
+  width: 450px;
+  margin: 0 auto;
+  text-align: center;
+  .foster-cases {
+    background-color: $secondary;
+    color: lighten(black, 20%);
+    margin-top: 30px;
+    padding-top: 15px;
+    height: 400px;
+    overflow: scroll;
+    .individual-case {
+      padding: 10px;
+    }
+    .individual-case:hover {
+      background-color: darken($secondary, 10%);
+      cursor: pointer
+    }
+  }
+  @media (max-width: 480px) {
+    width: 300px;
+  }
+}
 // .btn-primary {
 //   border: 2px solid white;
 //   border-radius: 5px;
@@ -134,7 +174,7 @@ $buttonBorderRadius: 8px;
 .choose-date {
   margin: 0 auto;
   width: 450px;
-  @media (max-width: 400px) {
+  @media (max-width: 480px) {
     width: 380px;
   }
   .DayPicker-NavBar {
@@ -169,6 +209,13 @@ $buttonBorderRadius: 8px;
   .DayPicker-Day {
     border: none;
   }
+  .DayPicker-Day:focus {
+    outline: none;
+  }
+  .DayPicker-Day--selected:not(.DayPicker-Day--disabled):not(.DayPicker-Day--outside) {
+    background-color: darken($secondary, 10%);
+    color: black;
+  }
   .DayPicker-Body {
     background: white;
     color: black;
@@ -176,6 +223,7 @@ $buttonBorderRadius: 8px;
   .table-wrapper {
     margin-top: 20px;
     height: 120px;
+    text-shadow: $text-shadow;
     @media (max-width: 400px) {
       margin-top: 0;
       height: 90px;
@@ -217,6 +265,7 @@ $buttonBorderRadius: 8px;
     a {
       padding-right: 80px;
       color: white;
+      text-shadow: $text-shadow;
       @media (max-width: 400px) {
         padding-right: 20px;
       }
@@ -226,8 +275,8 @@ $buttonBorderRadius: 8px;
 /* Choose Date Styles End*/
 
 .page-choose-location {
-  padding: 10px;
-
+  max-width: 650px;
+  margin: 0 auto;
   .input-container {
     margin-bottom: 3px;
   }
@@ -260,6 +309,7 @@ $buttonBorderRadius: 8px;
     height: 66px;
     line-height: 66px;
     font-size: 22px;
+    margin-bottom: 15px;
   }
 
   input[type="submit"] {
@@ -295,6 +345,7 @@ $buttonBorderRadius: 8px;
     font-weight: bold;
     font-size: 14px;
     padding: 0 15px;
+    background-color: darken($secondary, 25%) !important;
   }
 }
 
@@ -325,7 +376,7 @@ $buttonBorderRadius: 8px;
 
 /* Success Page */
 .success-wrapper {
-  width: 100%;
+  width: 650px;
   padding: 15px;
   #cancel-icon {
     text-align: center;

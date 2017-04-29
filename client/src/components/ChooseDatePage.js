@@ -49,7 +49,8 @@ export default class Home extends React.Component {
   render() {
     return (
       <div className="page-home choose-date">
-        <h3>Pick at least three dates</h3>
+        <a className='back-btn'><span className='glyphicon glyphicon-chevron-left'></span>Back</a>
+        <h2>Pick at least three dates</h2>
         <DayPicker
           initialMonth={ new Date(2017, 4) }
           selectedDays={ new Date(this.state.selectedDay) }

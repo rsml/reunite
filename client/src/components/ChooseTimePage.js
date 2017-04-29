@@ -81,7 +81,7 @@ export default class Home extends React.Component {
 
     return (
       <div className="page-choose-time">
-      	<a>Back</a>
+      	<a className='back-btn'><span className='glyphicon glyphicon-chevron-left'></span>Back</a>
         <h2>Select your time frame</h2>
         <div className="selected-dates">
         	{individualDates}
