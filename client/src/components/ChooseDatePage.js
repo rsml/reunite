@@ -3,6 +3,7 @@ import Time from 'react-time'
 import Promise from 'bluebird'
 import DayPicker from "react-day-picker";
 import "react-day-picker/lib/style.css"
+import { browserHistory } from 'react-router';
 
 // Home page component
 export default class Home extends React.Component {
@@ -27,6 +28,12 @@ export default class Home extends React.Component {
       selectedDayArray: []
     })
   }
+
+  handleClickCTA(event){
+    window.localStorage.setItem('date', this.state.selectedDay);
+    browserHistory.push('/choose-time');
+  }
+
   // render
   render() {
     return (
@@ -43,7 +50,7 @@ export default class Home extends React.Component {
                 <th><h4>Day 1</h4></th>
                 <th><h4>Day 2</h4></th>
                 <th><h4>Day 3</h4></th>
-              </tr>  
+              </tr>
             </thead>
             <tbody>
               <tr>
@@ -51,17 +58,17 @@ export default class Home extends React.Component {
                   return (
                     <td key={index}>
                       <h3>{item}</h3>
-                    </td>  
+                    </td>
                   )
                 })}
               </tr>
-            </tbody> 
+            </tbody>
           </table>
-        </div>  
-        <div className="btn-wrapper"> 
+        </div>
+        <div className="btn-wrapper">
           <a className="" onClick={() => this.clearDates()}><h4>Clear All</h4></a>
-          <button className="btn-primary"><h4>NEXT</h4></button>
-        </div>  
+          <button className="btn-primary" onClick={this.handleClickCTA.bind(this)}><h4>NEXT</h4></button>
+        </div>
       </div>
     );
   }

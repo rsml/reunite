@@ -1,6 +1,8 @@
 import React from "react";
 import PlacesAutocomplete, {geocodeByAddress, geocodeByPlaceId} from 'react-places-autocomplete'
 import { browserHistory } from 'react-router';
+import axios from 'axios';
+
 
 // Home page component
 export default class Home extends React.Component {
@@ -54,6 +56,39 @@ export default class Home extends React.Component {
   }
 
   handleClickCTA(event){
+    const address = window.localStoraget.getItem('address');
+
+    let savedDate = new Date(window.localStoraget.getItem('date'));
+    let savedTime = new Date(window.localStoraget.getItem('time'));
+
+    savedDate.setHours(savedTime.getHours());
+    savedDate.setMinutes(savedTime.getMinutes());
+    savedDate.setSeconds(savedTime.getSeconds());
+    savedDate.setMilliseconds(savedTime.getMilliseconds());
+
+
+    axios.post('http://ec2-34-208-196-65.us-west-2.compute.amazonaws.com:4040/api/visitations', {
+      location: address,
+      datetime: savedDate,
+      caseId: 1
+    })
+    .then(function (response) {
+      debugger;
+      var visitationId = response.visitationId;
+      axios.post('http://ec2-34-208-196-65.us-west-2.compute.amazonaws.com:4040/api/phonecall', {
+        location: address,
+        datetime: savedDate,
+        visitationId: visitationId
+      }).then(function (response) {
+        debugger;
+      });
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+
+
+
     browserHistory.push('/success');
   }
 
