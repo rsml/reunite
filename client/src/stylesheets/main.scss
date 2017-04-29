@@ -21,21 +21,21 @@ html, body {
 }
 
 h1 { font-size: 60px }
-h2 { 
+h2 {
   font-size: 40px;
   text-shadow: $text-shadow
 }
 h3 { font-size: 25px }
 h4 { font-size: 20px }
-h5 { font-size: 15px }
+h5 { font-size: 16px }
 h6 { font-size: 10px }
 @media (max-width: 768px) {
   h1 { font-size: 50px }
   h2 { font-size: 30px }
-  h4 { font-size: 15px }
+  h4 { font-size: 16px }
 }
 @media (max-width: 400px) {
-  h4 { font-size: 15px }
+  h4 { font-size: 16px }
   h3 { font-size: 20px }
 }
 
@@ -79,7 +79,8 @@ h6 { font-size: 10px }
     min-height: 100vh;
     height: 100%;
     background: $gradient;
-    font-family: 'Open Sans Condensed', sans-serif;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
 }
 
 .container {

@@ -19,6 +19,10 @@ export default class Home extends React.Component {
     browserHistory.push('/choose-location');
   }
 
+  handleClickBack(event){
+		browserHistory.push('/choose-time');
+  }
+
   // render
   render() {
   	const dateArray = JSON.parse(window.localStorage.getItem('dateArray') || "");
@@ -81,7 +85,7 @@ export default class Home extends React.Component {
 
     return (
       <div className="page-choose-time">
-      	<a className='back-btn'><span className='glyphicon glyphicon-chevron-left'></span>Back</a>
+      	<a className='back-btn' href="choose-date"><span className='glyphicon glyphicon-chevron-left' onClick={this.handleClickBack.bind(this)}></span>Back</a>
         <h2>Select your time frame</h2>
         <div className="selected-dates">
         	{individualDates}
