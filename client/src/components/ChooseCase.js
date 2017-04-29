@@ -1,4 +1,5 @@
 import React from "react";
+import { browserHistory } from "react-router";
 
 // Home page component
 export default class Home extends React.Component {
@@ -8,31 +9,31 @@ export default class Home extends React.Component {
     	<div className='page-choose-case'>
     		<h2>Select A Case</h2>
     		<div className='foster-cases'>
-    			<div className='individual-case'>
+    			<div className='individual-case' onClick={browserHistory.push("choose-date")}>
     				<h4>LastName <span>NO. 23765772</span></h4>
     			</div>
-    			<div className='individual-case'>
+    			<div className='individual-case' onClick={browserHistory.push("choose-date")}>
     				<h4>LastName <span>NO. 23765772</span></h4>
     			</div>
-    			<div className='individual-case'>
+    			<div className='individual-case' onClick={browserHistory.push("choose-date")}>
     				<h4>LastName <span>NO. 23765772</span></h4>
     			</div>
-    			<div className='individual-case'>
+    			<div className='individual-case' onClick={browserHistory.push("choose-date")}>
     				<h4>LastName <span>NO. 23765772</span></h4>
     			</div>
-    			<div className='individual-case'>
+    			<div className='individual-case' onClick={browserHistory.push("choose-date")}>
                     <h4>LastName <span>NO. 23765772</span></h4>
                 </div>
-                <div className='individual-case'>
+                <div className='individual-case' onClick={browserHistory.push("choose-date")}>
                     <h4>LastName <span>NO. 23765772</span></h4>
                 </div>
-                <div className='individual-case'>
+                <div className='individual-case' onClick={browserHistory.push("choose-date")}>
                     <h4>LastName <span>NO. 23765772</span></h4>
                 </div>
-                <div className='individual-case'>
+                <div className='individual-case' onClick={browserHistory.push("choose-date")}>
                     <h4>LastName <span>NO. 23765772</span></h4>
                 </div>
-                <div className='individual-case'>
+                <div className='individual-case' onClick={browserHistory.push("choose-date")}>
     				<h4>LastName <span>NO. 23765772</span></h4>
     			</div>
     		</div>
