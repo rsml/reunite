@@ -7,7 +7,7 @@ export default class Home extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      address: null,
+      address: '',
       isMapVisible: false
     }
     this.onChange = (address) => this.setState({ address })
@@ -50,7 +50,7 @@ export default class Home extends React.Component {
       savedAddress: this.state.address
     });
 
-    window.localStorage.setItem('address', savedAddress);
+    window.localStorage.setItem('address', this.state.address);
   }
 
   handleClickCTA(event){
@@ -85,7 +85,7 @@ export default class Home extends React.Component {
         })();
 
         return (
-          <div class="flex flex-column">
+          <div className="flex flex-column">
             <div className="flex-grow flex pull-to-front width-100 rounded input-container">
               <div className="flex-grow">
                 <PlacesAutocomplete inputProps={inputProps} />
