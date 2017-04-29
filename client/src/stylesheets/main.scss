@@ -71,7 +71,7 @@ $secondary: #FFFFFF;
     margin: 0;
     @media (max-width: 400px) {
       width: 360px;
-    } 
+    }
   }
   .DayPicker-WeekdaysRow {
     background: white;
@@ -182,6 +182,10 @@ $secondary: #FFFFFF;
     display: flex;
   }
 
+  .flex-column {
+    flex-direction: column;
+  }
+
   .flex-grow {
     flex: 1;
   }
@@ -211,6 +215,10 @@ $secondary: #FFFFFF;
     font-size: 14px;
     padding: 0 15px;
   }
+}
+
+.text-align-center {
+  text-align: center;
 }
 
 .cta {

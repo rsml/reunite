@@ -17,9 +17,7 @@ export default class Home extends React.Component {
     event.preventDefault()
 
     const that = this;
-    debugger;
     geocodeByAddress(this.state.address,  (err, latLng) => {
-      debugger;
       if (err) { console.log('Oh no!', err) }
 
       console.log(`Yay! Got latitude and longitude for ${that.state.address}`, latLng)
@@ -67,15 +65,14 @@ export default class Home extends React.Component {
 
     var that = this;
     const map = (function(){
-
       if(window.google && typeof window.google !== 'undefined') {
         const lowerHalf = (()=>{
           if(that.state.isMapVisible){
             return (
-              <div>
-                <div className="address-under-map">
+              <div className="flex-grow">
+                <h4 className="address-under-map">
                   {that.state.savedAddress}
-                </div>
+                </h4>
 
                 <div className="cta" onClick={that.handleClickCTA.bind(that)}>
                   CONFIRM
@@ -88,14 +85,14 @@ export default class Home extends React.Component {
         })();
 
         return (
-          <div>
-            <div className="flex pull-to-front width-100 rounded input-container">
+          <div class="flex flex-column">
+            <div className="flex-grow flex pull-to-front width-100 rounded input-container">
               <div className="flex-grow">
                 <PlacesAutocomplete inputProps={inputProps} />
               </div>
               <input className="search-input" type="submit" value="SEARCH" onClick={that.handleFormSubmit.bind(that)} />
             </div>
-            <div className="z-index-1">
+            <div className=" flex-grow z-index-1">
 
               <div id="googleMap"></div>
             </div>
@@ -111,16 +108,12 @@ export default class Home extends React.Component {
         }, 100)
         return "Loading...";
       }
-
-
     })();
-
-
 
 
     return (
       <div className="page-choose-location">
-        <h4>Choose a Location</h4>
+        <h2 className="text-align-center">Choose a Location</h2>
 
         {map}
       </div>
