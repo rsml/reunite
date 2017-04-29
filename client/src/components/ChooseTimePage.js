@@ -4,6 +4,8 @@ import { browserHistory } from 'react-router';
 // Home page component
 export default class Home extends React.Component {
 	handleClickCTA(event){
+		// debugger;
+
 		var uncleanDate = parseInt(document.getElementById('first-time-select').value, 10);
 		var dateHours = Math.floor(uncleanDate / 100);
 		var dateMinutes = Math.floor(uncleanDate % 100);

@@ -81,7 +81,7 @@ export default class Home extends React.Component {
       var visitationId = response.visitationId;
       axios.post('http://ec2-34-208-196-65.us-west-2.compute.amazonaws.com:4040/api/phonecall', {
         location: address,
-        datetime: savedDate,
+        datetime: combinedDate,
         visitationId: visitationId
       }).then(function (response) {
         debugger;
