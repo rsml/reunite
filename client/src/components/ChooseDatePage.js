@@ -39,9 +39,9 @@ export default class Home extends React.Component {
           <table>
             <thead>
               <tr>
-                <th><h4>Day 1</h4></th>
-                <th><h4>Day 2</h4></th>
-                <th><h4>Day 3</h4></th>
+                <th><h4>Choice 1</h4></th>
+                <th><h4>Choice 2</h4></th>
+                <th><h4>Choice 3</h4></th>
               </tr>  
             </thead>
             <tbody>
