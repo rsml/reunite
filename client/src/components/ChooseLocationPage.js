@@ -1,5 +1,6 @@
 import React from "react";
 import PlacesAutocomplete, {geocodeByAddress, geocodeByPlaceId} from 'react-places-autocomplete'
+import { browserHistory } from 'react-router';
 
 // Home page component
 export default class Home extends React.Component {
@@ -47,8 +48,15 @@ export default class Home extends React.Component {
     });
 
     this.setState({
-      isMapVisible: true
+      isMapVisible: true,
+      savedAddress: this.state.address
     });
+
+    window.localStorage.setItem('address', savedAddress);
+  }
+
+  handleClickCTA(event){
+    browserHistory.push('/success');
   }
 
   render() {
@@ -66,10 +74,10 @@ export default class Home extends React.Component {
             return (
               <div>
                 <div className="address-under-map">
-                  {that.state.address}
+                  {that.state.savedAddress}
                 </div>
 
-                <div className="cta">
+                <div className="cta" onClick={that.handleClickCTA.bind(that)}>
                   CONFIRM
                 </div>
               </div>

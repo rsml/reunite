@@ -94,4 +94,10 @@ html, body {
   border: 3px solid white;
   border-radius: 4px;
   margin-bottom: 44px;
+  cursor: pointer;
+
+  &:hover {
+    background: white;
+    color: rgb(80, 227, 194);
+  }
 }
