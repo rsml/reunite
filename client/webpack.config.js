@@ -39,6 +39,11 @@ module.exports = {
         options: {
           name: 'fonts/[name].[ext]',
         }
+      },
+      {
+        test: /\.png$/,
+        loader: "url-loader",
+        query: { mimetype: "image/png" }
       }
     ],
   },
