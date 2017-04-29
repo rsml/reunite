@@ -9,5 +9,18 @@ html, body {
 }
 
 .flex-grow {
-  flex: 1
+  flex: 1;
+}
+
+#googleMap {
+  width:100%;
+  height:400px;
+}
+
+.pull-to-front * {
+  z-index: 1000 !important;
+}
+
+.width-100 {
+  width: 100%;
 }
