@@ -1,6 +1,4 @@
 import React from "react"
-import Time from 'react-time'
-import Promise from 'bluebird'
 import DayPicker from "react-day-picker";
 import "react-day-picker/lib/style.css"
 import { browserHistory } from 'react-router';
@@ -19,7 +17,7 @@ export default class Home extends React.Component {
     if ( this.state.selectedDayArray.length < 3) {
       this.state.selectedDayArray.push(selected.toLocaleDateString())
       this.setState({
-        selectedDay: selected.toLocaleDateString()
+        selectedDay: selected.getTime()
       })
     }
   }
@@ -38,6 +36,7 @@ export default class Home extends React.Component {
   render() {
     return (
       <div className="page-home choose-date">
+        <h3>Pick at least three dates</h3>
         <DayPicker
           initialMonth={ new Date(2017, 4) }
           selectedDays={ new Date(this.state.selectedDay) }
@@ -57,7 +56,7 @@ export default class Home extends React.Component {
                 { this.state.selectedDayArray.map((item, index) => {
                   return (
                     <td key={index}>
-                      <h3>{item}</h3>
+                      <h4>{item}</h4>
                     </td>
                   )
                 })}

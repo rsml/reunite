@@ -1,4 +1,7 @@
-$buttonBorderRadius: 8px;
+@font-face {
+  font-family: 'Julius Sans One';
+  src: url('https://fonts.googleapis.com/css?family=Julius+Sans+One');
+}
 
 html, body {
   height: 100%;
@@ -22,35 +25,110 @@ h3 { font-size: 25px }
 h4 { font-size: 20px }
 h5 { font-size: 15px }
 h6 { font-size: 10px }
+@media (max-width: 768px) {
+  h1 { font-size: 50px }
+  h2 { font-size: 30px }
+  h4 { font-size: 15px }
+}
 @media (max-width: 400px) {
   h4 { font-size: 15px }
-  h3 { font-size: 13px }
+  h3 { font-size: 20px }
 }
+
 $primary: #3CE3C4;
 $secondary: #FFFFFF;
-.container {
-  padding: 0;
+$buttonBorderRadius: 8px;
+
+.btn-primary {
+  border: 2px solid white;
+  font-size: 30px;
+  border-radius: 5px;
+  background: $primary;
+  padding: 15px 50px;
+  margin-bottom: 30px;
 }
+.btn-primary:hover {
+  border: 2px solid $secondary;
+  background: $secondary;
+  color: $primary;
+}
+
 .container-wrapper {
     width: 100%;
     height:100%;
     background-color: $primary;
+    font-family: 'Julius Sans One', sans-serif;
 }
+
+.container {
+  padding: 0;
+}
+
+/* -- Time Select styling -- */
+
 .page-choose-time {
-    h2, h4 { color: $secondary }
-    h4 { font-weight: lighter }
-    select {
-        border: none;
-        -webkit-border-radius: 0;
-        background-color: $secondary;
+  width: 650px;
+  margin: 0 auto;
+  text-align: center;
+  a {
+    text-align: left;
+    display: block;
+    text-decoration: none;
+    color: $secondary;
+    cursor: pointer
+  }
+  h2, h4 { color: $secondary }
+  .selected-dates {
+    margin: 60px 0;
+    @media (max-width: 768px) {
+      margin: 25px 0 40px;
     }
+    .individual-date {
+      padding: 20px 20px 30px;
+      border-bottom: 1px solid $secondary;
+      h2 {
+        margin-right: 80px;
+      }
+      h2, .time-select {
+        display: inline-block;
+      }
+      .time-select {
+        margin: 0 20px;
+        h4 { font-weight: lighter }
+        select {
+          border: none;
+          color: black;
+          background-color: $secondary
+        }
+      }
+      @media (max-width: 768px) {
+        h2 {
+          display: block;
+          margin-right: 0;
+        }
+      }
+    }
+    .individual-date:last-child {
+      border-bottom: none;
+    }
+    @media (max-width: 480px) {
+      height: 330px;
+      overflow: scroll;
+    }
+  }
+  @media (max-width: 768px) {
+    width: 450px;
+  }
+  @media (max-width: 480px) {
+    width: 350px;
+  }
 }
-.btn-primary {
-  border: 2px solid white;
-  border-radius: 5px;
-  background: $primary;
-  padding: 5px 15px;
-}
+// .btn-primary {
+//   border: 2px solid white;
+//   border-radius: 5px;
+//   background: $primary;
+//   padding: 5px 15px;
+// }
 
 /* Choose Date Styles */
 .choose-date {
@@ -227,7 +305,7 @@ $secondary: #FFFFFF;
 .cta {
   padding: 0 56px;
   display: table;
-  font-size: 28px;
+  font-size: 30px;
   margin: auto;
   height: 82px;
   line-height: 88px;
@@ -236,6 +314,7 @@ $secondary: #FFFFFF;
   border-radius: 4px;
   margin-bottom: 44px;
   cursor: pointer;
+  background-color: $primary;
 
   &:hover {
     background: white;
@@ -244,16 +323,40 @@ $secondary: #FFFFFF;
 }
 
 
-
-  .flex {
-    display: flex;
-    display: -webkit-flex;
+/* Success Page */
+.success-wrapper {
+  width: 100%;
+  padding: 15px;
+  #cancel-icon {
+    text-align: center;
+    position: absolute;
+    right: 15px;
+    color: white;
+    i {
+      font-size: 25px;
+    }
   }
-
-  .flex-column {
-    flex-direction: column;
+  .success-message {
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    i {
+      font-size: 100px;
+    }
   }
+}
 
-  .flex-grow {
-    flex-grow: 1;
-  }
+.flex {
+  display: flex;
+  display: -webkit-flex;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+.flex-grow {
+  flex-grow: 1;
+}

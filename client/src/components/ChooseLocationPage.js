@@ -56,15 +56,20 @@ export default class Home extends React.Component {
   }
 
   handleClickCTA(event){
-    const address = window.localStoraget.getItem('address');
+    const address = window.localStorage.getItem('address');
 
-    let savedDate = new Date(window.localStoraget.getItem('date'));
-    let savedTime = new Date(window.localStoraget.getItem('time'));
+    let savedDate = new Date(parseInt(window.localStorage.getItem('date'), 10));
+    let savedTime = new Date(parseInt(window.localStorage.getItem('time'), 10));
 
-    savedDate.setHours(savedTime.getHours());
-    savedDate.setMinutes(savedTime.getMinutes());
-    savedDate.setSeconds(savedTime.getSeconds());
-    savedDate.setMilliseconds(savedTime.getMilliseconds());
+    let combinedDate = new Date(parseInt(window.localStorage.getItem('time'), 10));;
+    combinedDate.setDate(savedDate.getDate());
+    combinedDate.setMonth(savedDate.getMonth());
+    combinedDate.setYear(1900 + savedDate.getYear());
+
+    // savedDate.setHours(savedTime.getHours());
+    // savedDate.setMinutes(savedTime.getMinutes());
+    // savedDate.setSeconds(savedTime.getSeconds());
+    // savedDate.setMilliseconds(savedTime.getMilliseconds());
 
 
     axios.post('http://ec2-34-208-196-65.us-west-2.compute.amazonaws.com:4040/api/visitations', {
@@ -73,7 +78,6 @@ export default class Home extends React.Component {
       caseId: 1
     })
     .then(function (response) {
-      debugger;
       var visitationId = response.visitationId;
       axios.post('http://ec2-34-208-196-65.us-west-2.compute.amazonaws.com:4040/api/phonecall', {
         location: address,
