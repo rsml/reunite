@@ -182,6 +182,10 @@ $secondary: #FFFFFF;
     display: flex;
   }
 
+  .flex-column {
+    flex-direction: column;
+  }
+
   .flex-grow {
     flex: 1;
   }
