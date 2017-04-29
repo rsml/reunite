@@ -5,7 +5,10 @@ import PlacesAutocomplete, {geocodeByAddress, geocodeByPlaceId} from 'react-plac
 export default class Home extends React.Component {
   constructor(props) {
     super(props)
-    this.state = { address: 'San Francisco, CA' }
+    this.state = {
+      address: null,
+      isMapVisible: false
+    }
     this.onChange = (address) => this.setState({ address })
   }
 
@@ -25,6 +28,9 @@ export default class Home extends React.Component {
 
   drawMap(latLng) {
     if(!window.google){
+      this.setState({
+        isMapVisible: false
+      });
       return;
     }
 
@@ -39,6 +45,10 @@ export default class Home extends React.Component {
       map: map,
       title: 'Hello World!'
     });
+
+    this.setState({
+      isMapVisible: true
+    });
   }
 
   render() {
@@ -51,26 +61,38 @@ export default class Home extends React.Component {
     const map = (function(){
 
       if(window.google && typeof window.google !== 'undefined') {
+        const lowerHalf = (()=>{
+          if(that.state.isMapVisible){
+            return (
+              <div>
+                <div className="address-under-map">
+                  {that.state.address}
+                </div>
+
+                <div className="cta">
+                  CONFIRM
+                </div>
+              </div>
+            );
+          }else{
+            return null;
+          }
+        })();
+
         return (
           <div>
-            <div className="flex pull-to-front width-100">
+            <div className="flex pull-to-front width-100 rounded input-container">
               <div className="flex-grow">
                 <PlacesAutocomplete inputProps={inputProps} />
               </div>
-              <input type="submit" value="Search" onClick={that.handleFormSubmit.bind(that)} />
+              <input className="search-input" type="submit" value="SEARCH" onClick={that.handleFormSubmit.bind(that)} />
             </div>
             <div className="z-index-1">
 
               <div id="googleMap"></div>
             </div>
 
-            <div>
-              {that.state.address}
-            </div>
-
-            <div className="cta">
-              CONFIRM
-            </div>
+            {lowerHalf}
 
           </div>
         )
