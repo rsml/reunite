@@ -60,6 +60,7 @@ export default class Home extends React.Component {
   }
 
   handleClickCTA(event){
+    let visitation
     const address = window.localStorage.getItem('address');
 
     let savedDate = new Date(parseInt(window.localStorage.getItem('date'), 10));
@@ -70,34 +71,49 @@ export default class Home extends React.Component {
     combinedDate.setMonth(savedDate.getMonth());
     combinedDate.setYear(1900 + savedDate.getYear());
 
-    // savedDate.setHours(savedTime.getHours());
-    // savedDate.setMinutes(savedTime.getMinutes());
-    // savedDate.setSeconds(savedTime.getSeconds());
-    // savedDate.setMilliseconds(savedTime.getMilliseconds());
+    axios.get('http://ec2-34-208-196-65.us-west-2.compute.amazonaws.com:4040/api/visitations')
+    .then((response) => {
+      visitation = response.data[0]
+      savedDate.setHours(savedTime.getHours());
+      savedDate.setMinutes(savedTime.getMinutes());
+      savedDate.setSeconds(savedTime.getSeconds());
+      savedDate.setMilliseconds(savedTime.getMilliseconds());
 
-
-    axios.post('http://ec2-34-208-196-65.us-west-2.compute.amazonaws.com:4040/api/visitations', {
-      location: address,
-      datetime: savedDate,
-      caseId: 1
-    })
-    .then(function (response) {
-      var visitationId = response.visitationId;
-      axios.post('http://ec2-34-208-196-65.us-west-2.compute.amazonaws.com:4040/api/phonecall', {
+      let visitationObj = {
+        _id: visitation._id,
+        caseNumber: visitation.caseNumber,
+        isWeekly: visitation.isWeekly,
+        parentId: visitation.parentId,
+        caregiverId: visitation.caregiverId,
+        childId: visitation.childId,
+        socialWorkerId: visitation.socialWorkerId,
         location: address,
-        datetime: combinedDate.getTime(),
-        visitationId: visitationId
-      }).then(function (response) {
-        debugger;
-      });
+        datetime: combinedDate.getTime()
+      }
+      console.log(visitationObj)
+      axios.put('http://ec2-34-208-196-65.us-west-2.compute.amazonaws.com:4040/api/visitations/' + visitation._id, {
+        _id: visitation._id,
+        caseNumber: visitation.caseNumber,
+        isWeekly: visitation.isWeekly,
+        parentId: visitation.parentId,
+        caregiverId: visitation.caregiverId,
+        childId: visitation.childId,
+        socialWorkerId: visitation.socialWorkerId,
+        location: address,
+        datetime: savedDate
+      })
+      .then(function (response) {
+        var visitationId = response.data._id;
+        axios.get('http://ec2-34-208-196-65.us-west-2.compute.amazonaws.com:4040/api/call/parent/' + visitationId)
+        .then(function (response) {
+          browserHistory.push('/success');
+        });
+      })
+      .catch(function (error) {
+        console.log(error)
+      })
     })
-    .catch(function (error) {
-      console.log(error);
-    });
 
-
-
-    browserHistory.push('/success');
   }
 
   render() {
@@ -116,9 +132,13 @@ export default class Home extends React.Component {
                 <h4 className="address-under-map">
                   {that.state.savedAddress}
                 </h4>
-
-                <div className="cta" onClick={that.handleClickCTA.bind(that)}>
-                  CONFIRM
+                <div className="location-btn-wrapper">
+                  <a onClick={that.handleClickCTA.bind(that)} className="btn btn-1">
+                    <svg>
+                      <rect x="0" y="0" fill="none" width="100%" height="100%"/>
+                    </svg>
+                   <h4>CONFIRM</h4>
+                  </a>
                 </div>
               </div>
             );

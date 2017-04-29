@@ -60,10 +60,10 @@ export default class Home extends React.Component {
           <table>
             <thead>
               <tr>
-                <th><h4>Day 1</h4></th>
-                <th><h4>Day 2</h4></th>
-                <th><h4>Day 3</h4></th>
-              </tr>
+                <th><h4>Choice 1</h4></th>
+                <th><h4>Choice 2</h4></th>
+                <th><h4>Choice 3</h4></th>
+              </tr>  
             </thead>
             <tbody>
               <tr>
@@ -79,8 +79,13 @@ export default class Home extends React.Component {
           </table>
         </div>
         <div className="btn-wrapper">
-          <a className="" onClick={() => this.clearDates()}><h4>Clear All</h4></a>
-          <button className="btn-primary" onClick={this.handleClickCTA.bind(this)}><h4>NEXT</h4></button>
+          <a onClick={this.handleClickCTA.bind(this)} className="btn btn-1">
+            <svg>
+              <rect x="0" y="0" fill="none" width="100%" height="100%"/>
+            </svg>
+           <h4>NEXT</h4>
+          </a>
+          <a className="" onClick={() => this.clearDates()}><p>Clear All</p></a>
         </div>
       </div>
     );

@@ -224,7 +224,7 @@ h6 { font-size: 10px }
   }
   .table-wrapper {
     margin-top: 20px;
-    height: 120px;
+    height: 100px;
     text-shadow: $text-shadow;
     @media (max-width: 400px) {
       margin-top: 0;
@@ -254,9 +254,6 @@ h6 { font-size: 10px }
   .btn-wrapper {
     width: 450px;
     margin: 0 auto 20px;
-    a, button {
-      display: inline-block;
-    }
     @media (max-width: 400px) {
       width: 40fost
       0px;
@@ -265,8 +262,10 @@ h6 { font-size: 10px }
       }
     }
     a {
-      padding-right: 80px;
       color: white;
+      h4 {
+        padding-bottom: 20px;
+      }
       text-shadow: $text-shadow;
       @media (max-width: 400px) {
         padding-right: 20px;
@@ -291,7 +290,7 @@ h6 { font-size: 10px }
 
   h4 {
     text-align: center;
-    font-size: 40px;
+    // font-size: 40px;
     margin-bottom: 44px;
 
   }
@@ -409,7 +408,85 @@ h6 { font-size: 10px }
 .flex-column {
   flex-direction: column;
 }
-
+.location-btn-wrapper {
+  text-align: center;
+}
 .flex-grow {
   flex-grow: 1;
+}
+.btn {
+  color: white;
+  cursor: pointer;
+  display: block;
+  font-size:16px;
+  font-weight: 400;
+  line-height: 45px;
+  margin: 0 auto 2em;
+  max-width: 160px; 
+  position: relative;
+  text-decoration: none;
+  text-transform: uppercase;
+  vertical-align: middle;
+  width: 100%; 
+  display: inline-block;
+  text-align: center;
+  
+  @media(min-width: 400px) {
+    display: inline-block;
+    margin-right: 2.5em;
+  
+    &:nth-of-type(even) {
+      margin-right: 0;
+    }
+  }
+  
+  @media(min-width: 600px) {
+  
+    &:nth-of-type(even) {
+      margin-right: 2.5em;
+    }
+    
+    &:nth-of-type(5) {
+      margin-right: 0;
+    }
+    
+  }
+  
+  &:hover { text-decoration: none; }
+  
+}
+a.btn-1 {
+  font-weight: 100;
+  color: white;
+  vertical-align: baseline;
+  margin: 0;
+  display: inline-block;
+  text-align: center;
+  svg {
+    height: 55px;
+    left: 0;
+    position: absolute;
+    top: 0; 
+    width: 100%; 
+  }
+  
+  rect {
+    fill: none;
+    stroke: white;
+    stroke-width: 3;
+    stroke-dasharray: 422, 0;
+  }
+}
+
+.btn-1:hover {
+  font-weight: 900;
+  letter-spacing: 1px;
+  color: white;
+  
+  rect {
+    stroke-width: 5;
+    stroke-dasharray: 15, 310;
+    stroke-dashoffset: 48;
+    transition: all 1.35s cubic-bezier(0.19, 1, 0.22, 1);
+  }
 }
