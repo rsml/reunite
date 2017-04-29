@@ -60,17 +60,17 @@ export default class Home extends React.Component {
           <table>
             <thead>
               <tr>
-                <th><h4>Choice 1</h4></th>
-                <th><h4>Choice 2</h4></th>
-                <th><h4>Choice 3</h4></th>
-              </tr>  
+                <th><h4><span className="underline">Choice 1</span></h4></th>
+                <th><h4><span className="underline">Choice 2</span></h4></th>
+                <th><h4><span className="underline">Choice 3</span></h4></th>
+              </tr>
             </thead>
             <tbody>
               <tr>
                 { this.state.selectedDayArray.map((item, index) => {
                   return (
                     <td key={index}>
-                      <h4>{item}</h4>
+                      <h3 className="margin-top-0"><b>{item}</b></h3>
                     </td>
                   )
                 })}
