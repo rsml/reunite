@@ -73,9 +73,9 @@ export default class Home extends React.Component {
           if(that.state.isMapVisible){
             return (
               <div>
-                <div className="address-under-map">
+                <h4 className="address-under-map">
                   {that.state.savedAddress}
-                </div>
+                </h4>
 
                 <div className="cta" onClick={that.handleClickCTA.bind(that)}>
                   CONFIRM
@@ -120,7 +120,7 @@ export default class Home extends React.Component {
 
     return (
       <div className="page-choose-location">
-        <h4>Choose a Location</h4>
+        <h2 className="text-align-center">Choose a Location</h2>
 
         {map}
       </div>
